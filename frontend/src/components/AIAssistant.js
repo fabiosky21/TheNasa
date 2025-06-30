@@ -34,50 +34,6 @@ function AIAssistant() {
     setShowIntro(false);
     setLoading(true);
 
-    const lower = userInput.toLowerCase();
-
-    if (
-      lower.includes("image") ||
-      lower.includes("video") ||
-      lower.includes("media")
-    ) {
-      const aiMessage = {
-        sender: "ai",
-        text: `You can explore NASA's image and video archive in the <a href="/Media-Search" style="color:#1976d2; text-decoration: underline;">Media Search</a> section.`,
-      };
-      setMessages((prev) => [...prev, aiMessage]);
-      setLoading(false);
-      return;
-    }
-
-    if (
-      lower.includes("asteroid") ||
-      lower.includes("neo") ||
-      lower.includes("near earth") ||
-      lower.includes("objects") ||
-      lower.includes("charts") ||
-      lower.includes("data") 
-    ) {
-      const aiMessage = {
-        sender: "ai",
-        text: `You can view Near Earth Object data in the <a href="/NEOWS" style="color:#1976d2; text-decoration: underline;">NEO Lookup</a> section.`,
-      };
-      setMessages((prev) => [...prev, aiMessage]);
-      setLoading(false);
-      return;
-    }
-
-    if (lower.includes("picture of the day") || lower.includes("apod")) {
-      const aiMessage = {
-        sender: "ai",
-        text: `You can find the NASA Picture of the Day on the <a href="/" style="color:#1976d2; text-decoration: underline;">Home Page</a>.`,
-      };
-      setMessages((prev) => [...prev, aiMessage]);
-      setLoading(false);
-      return;
-    }
-
-    // Fallback to AI explanation
     try {
       const res = await fetch("http://localhost:5000/explain-tech", {
         method: "POST",
@@ -97,137 +53,56 @@ function AIAssistant() {
 
   return (
     <>
-      {/* Floating Icon */}
       <div
+        className={`ai-floating-icon ${open ? "open" : ""}`}
         onClick={() => setOpen(!open)}
-        style={{
-          position: "fixed",
-          bottom: "40px",
-          right: "20px",
-          width: "90px",
-          height: "90px",
-          borderRadius: "50%",
-          backgroundColor: open ? "#4caf50" : "#1976d2",
-          color: "white",
-          fontSize: "32px",
-          textAlign: "center",
-          lineHeight: "60px",
-          cursor: "pointer",
-          transition: "background-color 0.3s ease",
-          zIndex: 9999,
-        }}
       >
         <img
           src={loading ? loadingImages[loadingFrame] : astro}
-          alt="astronauta"
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          alt="astronaut"
+          className="ai-floating-img"
         />
       </div>
 
-      {/* Assistant Popup */}
       {open && (
-        <div
-          style={{
-            position: "fixed",
-            bottom: "150px",
-            left: "132rem",
-            width: "360px",
-            height: "600px",
-            padding: "15px",
-            backgroundColor: "#fff",
-            boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
-            borderRadius: "10px",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            zIndex: 9999,
-          }}
-        >
-          {/* Intro message (disappears after first user input) */}
+        <div className="ai-popup">
           {showIntro && (
-            <div>
-              <div style={{ marginBottom: "10px", fontSize: "1.5rem" }}>
+            <div className="ai-intro">
+              <div className="ai-intro-text">
                 <strong>Do you need help with something?</strong>
                 <br />
                 I'm here to help you with anything.
               </div>
-              <img
-                src={help}
-                alt="intro"
-                style={{
-                  width: "200px",
-                  marginBottom: "10px",
-                  borderRadius: "10px",
-                  margin: "0 auto",
-                  display: "block",
-                }}
-              />
+              <img src={help} alt="intro" className="ai-intro-img" />
             </div>
           )}
 
-          {/* Messages */}
-          <div
-            style={{
-              flexGrow: 1,
-              overflowY: "auto",
-              paddingRight: "5px",
-              marginBottom: "10px",
-            }}
-          >
+          <div className="ai-messages">
             {messages.map((msg, idx) => (
               <div
                 key={idx}
+                className={`ai-message ${msg.sender}`}
                 style={{
-                  textAlign: msg.sender === "user" ? "right" : "left",
-                  marginBottom: "8px",
+                  alignSelf: msg.sender === "user" ? "flex-end" : "flex-start",
                 }}
               >
-                <span
-                  style={{
-                    display: "inline-block",
-                    backgroundColor:
-                      msg.sender === "user" ? "#dcf8c6" : "#e4e6eb",
-                    padding: "10px 14px",
-                    borderRadius: "20px",
-                    maxWidth: "80%",
-                    fontSize: "1.5rem",
-                  }}
-                  dangerouslySetInnerHTML={{ __html: msg.text }}
-                ></span>
+                <span dangerouslySetInnerHTML={{ __html: msg.text }} />
               </div>
             ))}
           </div>
 
-          {/* Input + Button */}
-          <div>
+          <div className="ai-input-container">
             <textarea
               value={userInput}
               onChange={(e) => setUserInput(e.target.value)}
               rows={2}
-              style={{
-                width: "100%",
-                resize: "none",
-                marginBottom: "6px",
-                padding: "6px",
-                fontSize: "1.5rem",
-              }}
+              className="ai-input"
               placeholder="Ask me something..."
             />
             <button
               onClick={handleAskAI}
               disabled={loading}
-              style={{
-                width: "70%",
-                padding: "8px",
-                backgroundColor: "#1976d2",
-                color: "#fff",
-                border: "none",
-                borderRadius: "5px",
-                cursor: "pointer",
-                fontSize: "1.3rem",
-                margin: "0 auto",
-                display: "block",
-              }}
+              className="ai-send-button"
             >
               {loading ? "Thinking..." : "Ask"}
             </button>

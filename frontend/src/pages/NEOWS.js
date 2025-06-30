@@ -60,48 +60,41 @@ const NEOWS = () => {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+    <div className="neows-page-wrapper">
       <Header />
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", gap: "1rem", margin: "1.5rem 0" }}>
-        <img src={earth} alt="Left Logo" style={{ height: "200px", objectFit: "contain" }} />
-        <h1 style={{ margin: 0, fontSize: "2.5rem" }}>Near Earth Object Lookup</h1>
-        <img src={aste} alt="Right Logo" style={{ height: "200px" }} />
+      <div className="neows-header-section">
+        <img src={earth} alt="Left Logo" className="neows-header-logo" />
+        <h1 className="neows-header-title">Near Earth Object Lookup</h1>
+        <img src={aste} alt="Right Logo" className="neows-header-logo" />
       </div>
 
-      <div style={{ flex: 1, padding: "2rem", textAlign: "center" }}>
-        <p style={{ fontSize: "2rem", marginBottom: "1rem" }}>
-          Ready to see what is out in the space.
-        </p>
+      <div className="neows-content">
+        <p className="neows-intro">Ready to see what is out in the space.</p>
 
-        <button
-          onClick={fetchNeoData}
-          style={{ padding: "0.8rem 2rem", marginTop: "3rem", fontSize: "2rem", cursor: "pointer", backgroundColor: "#0077cc", color: "white", border: "none", borderRadius: "5px", marginBottom: "1rem" }}>
-          Search NEOs
-        </button>
+        <button onClick={fetchNeoData} className="neows-search-button">Search NEOs</button>
 
         {!hasSearched && (
-          <div style={{ marginBottom: "2rem" }}>
-            <img src={circle} alt="Ready to search" style={{ width: "1000px", opacity: 0.8 }} />
+          <div className="neows-placeholder-section">
+            <img src={circle} alt="Ready to search" className="neows-placeholder-image" />
           </div>
         )}
 
-        {error && <p style={{ color: "red" }}>{error}</p>}
+        {error && <p className="neows-error">{error}</p>}
 
         {loading && (
-          <div style={{ textAlign: "center", marginTop: "5rem" }}>
-            <img src={ship} alt="Loading..." style={{ width: "500px", height: "500px" }} />
+          <div className="neows-loader">
+            <img src={ship} alt="Loading..." className="neows-loader-img" />
             <p>Searching NASA’s database...</p>
           </div>
         )}
 
-        {!loading && neoResults.length > 0 && (
-          <NEOWSCharts data={neoResults} />
-        )}
+        {!loading && neoResults.length > 0 && <NEOWSCharts data={neoResults} />}
       </div>
 
       <Footer />
     </div>
   );
 };
+
 
 export default NEOWS;
