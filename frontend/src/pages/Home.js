@@ -111,7 +111,7 @@ function Home() {
                 <img
                   src={apod.url}
                   alt={apod.title}
-                  style={{ maxWidth: "100%", borderRadius: "10px" }}
+                  className="apod-image"
                 />
                 <h3>{apod.title}</h3>
                 <p>{apod.explanation}</p>
@@ -146,7 +146,7 @@ function Home() {
                     <img
                       src={item[10]}
                       alt="Tech visual"
-                      style={{ maxWidth: "100%", borderRadius: "6px" }}
+                      className="tech-image"
                     />
                   )}
 

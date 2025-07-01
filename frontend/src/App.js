@@ -5,6 +5,8 @@ import Home from "./pages/Home";
 import MediaSearch from "./pages/MediaSearch";
 import NEOWS from "./pages/NEOWS";
 import AIAssistant from "./components/AIAssistant";
+import DataSpace from "./pages/DataSpace";
+import SpaceSightseeing from "./pages/SpaceSightseeing";
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/media-search" element={<MediaSearch />} />
         <Route path="/neows" element={<NEOWS />} />
+        <Route path="/DataSpace" element={<DataSpace />} />
+        <Route path="/SpaceSightseeing" element={<SpaceSightseeing />} />
       </Routes>
       <AIAssistant />
     </Router>

@@ -14,6 +14,8 @@ const Header = () => {
         <Link to="/" className="pill-button">Home</Link>
         <Link to="/media-search" className="pill-button">Media Search</Link>
         <Link to="/NEOWS" className="pill-button">NEO Lookup</Link>
+        <Link to="/DataSpace" className="pill-button">Submit Information</Link>
+        <Link to="/SpaceSightseeing" className="pill-button">Sightseeing</Link>
       </nav>
     </>
   );

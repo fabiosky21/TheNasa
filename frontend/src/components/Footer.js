@@ -10,12 +10,17 @@ const Footer = () => {
         <img src={fl} alt="Logo" className="footer-logo" />
 
         <div className="footer-nav-links">
+          <Link to="/Home" className="footer-link">
+            Home
+          </Link>
           <Link to="/media-search" className="footer-link">
             Media Search
           </Link>
           <Link to="/NEOWS" className="footer-link">
             NEO Lookup
           </Link>
+         
+          
         </div>
 
         <div className="footer-social-icons">
