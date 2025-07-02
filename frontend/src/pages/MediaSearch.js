@@ -262,6 +262,7 @@ useEffect(() => {
             <button
               onClick={() => setModalMedia(null)}
               className="media-modal-close"
+              aria-label="Close modal"
             >
               X
             </button>
@@ -274,6 +275,7 @@ useEffect(() => {
               />
             ) : (
               <video
+                
                 src={modalMedia.url}
                 controls
                 autoPlay

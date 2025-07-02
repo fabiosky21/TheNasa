@@ -44,7 +44,7 @@ const SpaceSightseeing = () => {
         ) : (
           <div className="sightseeing-grid">
             {sightings.map((item) => (
-              <div key={item.id} className="sightseeing-card">
+              <div key={item.id} className="sightseeing-card" data-testid={`sightseeing-card-${item.name}`}>
                 <div className="sightseeing-info">
                   <h3>{item.name}</h3>
                   <p>

@@ -34,6 +34,88 @@ function AIAssistant() {
     setShowIntro(false);
     setLoading(true);
 
+    const lower = userInput.toLowerCase();
+
+    // === askinging for directions ===
+    if (
+      lower.includes("image") ||
+      lower.includes("video") ||
+      lower.includes("media")
+    ) {
+      const aiMessage = {
+        sender: "ai",
+        text: `You can explore NASA's image and video archive in the <a href="/media-search" style="color:#1976d2; text-decoration: underline;">Media Search</a> section.`,
+      };
+      setMessages((prev) => [...prev, aiMessage]);
+      setLoading(false);
+      return;
+    }
+
+    if (
+      lower.includes("asteroid") ||
+      lower.includes("neo") ||
+      lower.includes("near earth") ||
+      lower.includes("objects") ||
+      lower.includes("charts") ||
+      lower.includes("data")
+    ) {
+      const aiMessage = {
+        sender: "ai",
+        text: `You can view Near Earth Object data in the <a href="/NEOWS" style="color:#1976d2; text-decoration: underline;">NEO Lookup</a> section.`,
+      };
+      setMessages((prev) => [...prev, aiMessage]);
+      setLoading(false);
+      return;
+    }
+
+    if (
+      lower.includes("picture of the day") ||
+      lower.includes("apod") ||
+      lower.includes("technology")
+    ) {
+      const aiMessage = {
+        sender: "ai",
+        text: `You can find the NASA Picture of the Day on the <a href="/" style="color:#1976d2; text-decoration: underline;">Home Page</a>.`,
+      };
+      setMessages((prev) => [...prev, aiMessage]);
+      setLoading(false);
+      return;
+    }
+    if (
+      lower.includes("submit") ||
+      lower.includes("where can i submit") ||
+      lower.includes("i saw") ||
+      lower.includes("i catch") ||
+      lower.includes("report a sighting") ||
+      lower.includes("upload")
+    ) {
+      const aiMessage = {
+        sender: "ai",
+        text: `You can share your discovery in the <a href="/DataSpace" style="color:#1976d2; text-decoration: underline;">Submit Information</a> section.`,
+      };
+      setMessages((prev) => [...prev, aiMessage]);
+      setLoading(false);
+      return;
+    }
+    if (
+      lower.includes("sightseeing") ||
+      lower.includes("sightings") ||
+      lower.includes("what have people seen") ||
+      lower.includes("people from all over the world") ||
+      lower.includes("unexplained objects") ||
+      lower.includes("beautiful cosmic views") ||
+      lower.includes("see submissions") ||
+      lower.includes("discoveries from others")
+    ) {
+      const aiMessage = {
+        sender: "ai",
+        text: `You can explore space sightings and discoveries from people around the world in the <a href="/SpaceSightseeing" style="color:#1976d2; text-decoration: underline;">Sightseeing</a> section.`,
+      };
+      setMessages((prev) => [...prev, aiMessage]);
+      setLoading(false);
+      return;
+    }
+
     try {
       const res = await fetch("http://localhost:5000/explain-tech", {
         method: "POST",

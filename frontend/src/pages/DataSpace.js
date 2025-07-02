@@ -110,7 +110,7 @@ const DataSpace = () => {
             onChange={handleChange}
             required
           />
-          <input type="file" name="image" accept="image/*" onChange={handleChange} required />
+          <input type="file" name="image" accept="image/*" onChange={handleChange} required data-testid="image-upload" />
           <button type="submit" disabled={loading}>
             Submit
           </button>

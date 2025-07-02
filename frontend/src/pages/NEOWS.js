@@ -1,4 +1,3 @@
-// ✅ NEOWS.js
 import React, { useState } from "react";
 import NEOWSCharts from "../components/NEOWSCharts";
 import Footer from "../components/Footer";
