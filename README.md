@@ -19,7 +19,7 @@ A modern, full-stack web app to explore NASA’s image & video archives, Near-Ea
 
 - **AI Assistant:** Natural language Q&A about NASA, app content, and navigation
 - **Loading State Management:** Smooth UX while data loads
-- **Tested:** Unit/integration tests for frontend & backend
+- **Tested:** Unit/integration tests for frontend & backend using jest
 - **Responsive Design:** Works great on mobile, tablet, and desktop
 - **Smart Search & Filters:** Filter NASA images/videos by topic, media type, or result limit
 - **User Submissions:** Users can submit sightings (with optional images)
@@ -77,7 +77,7 @@ A modern, full-stack web app to explore NASA’s image & video archives, Near-Ea
 
 ---
 
-## 🧪 Testing
+## 🧪 Testing using Jest
 
 - **Frontend tests:**  
   `npm install --save-dev @testing-library/react @testing-library/jest-dom @testing-library/user-event jest`  
