@@ -70,7 +70,7 @@ A modern, full-stack web app to explore NASA’s image & video archives, Near-Ea
 ## ▶️ Running Locally
 
 - **Start backend:**  
-  `cd backend && npm start`
+  `cd backend && node server.js`
 - **Start frontend:**  
   `cd frontend && npm start`
 - **Frontend connects to backend and Supabase using your `.env` settings**
