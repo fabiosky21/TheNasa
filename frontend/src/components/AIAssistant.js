@@ -4,6 +4,36 @@ import astro from "../assets/images/astro.png";
 import cama from "../assets/images/cama.png";
 import loopi from "../assets/images/loopi.png";
 import help from "../assets/images/help.gif";
+import { useNavigate } from "react-router-dom";
+
+function AIAssistant() {
+  const navigate = useNavigate();
+
+  // ... your code ...
+
+  // In your AI answer logic, do:
+  if (/*...*/) {
+    setMessages((prev) => [
+      ...prev,
+      {
+        sender: "ai",
+        text: `You can view Near Earth Object data in the <span class="ai-link" data-path="/NEOWS">NEO Lookup</span> section.`,
+      },
+    ]);
+    setLoading(false);
+    return;
+  }
+
+  // Then, in your message rendering:
+  <span
+    dangerouslySetInnerHTML={{ __html: msg.text }}
+    onClick={(e) => {
+      if (e.target.classList.contains("ai-link")) {
+        navigate(e.target.getAttribute("data-path"));
+      }
+    }}
+  />
+
 
 function AIAssistant() {
   const [open, setOpen] = useState(false);
@@ -169,7 +199,14 @@ function AIAssistant() {
                   alignSelf: msg.sender === "user" ? "flex-end" : "flex-start",
                 }}
               >
-                <span dangerouslySetInnerHTML={{ __html: msg.text }} />
+                <span
+                 dangerouslySetInnerHTML={{ __html: msg.text }}
+                 onClick={(e) => {
+                 if (e.target.classList.contains("ai-link")) {
+                navigate(e.target.getAttribute("data-path"));
+                }
+                }}
+                />
               </div>
             ))}
           </div>
