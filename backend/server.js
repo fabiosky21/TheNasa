@@ -37,9 +37,7 @@ app.get("/search-images", async (req, res) => {
     res.status(500).json({ error: "Failed to search NASA media" });
   }
 });
-app.get('/', (req, res) => {
-  res.send('NASA Explorer API is running 🚀');
-});
+
 
 
 //Near Earth Object Web Service
