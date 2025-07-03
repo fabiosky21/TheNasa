@@ -7,35 +7,6 @@ import help from "../assets/images/help.gif";
 import { useNavigate } from "react-router-dom";
 
 function AIAssistant() {
-  const navigate = useNavigate();
-
-  // ... your code ...
-
-  // In your AI answer logic, do:
-  if (/*...*/) {
-    setMessages((prev) => [
-      ...prev,
-      {
-        sender: "ai",
-        text: `You can view Near Earth Object data in the <span class="ai-link" data-path="/NEOWS">NEO Lookup</span> section.`,
-      },
-    ]);
-    setLoading(false);
-    return;
-  }
-
-  // Then, in your message rendering:
-  <span
-    dangerouslySetInnerHTML={{ __html: msg.text }}
-    onClick={(e) => {
-      if (e.target.classList.contains("ai-link")) {
-        navigate(e.target.getAttribute("data-path"));
-      }
-    }}
-  />
-
-
-function AIAssistant() {
   const [open, setOpen] = useState(false);
   const [userInput, setUserInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -43,6 +14,7 @@ function AIAssistant() {
   const [loadingFrame, setLoadingFrame] = useState(0);
   const [messages, setMessages] = useState([]);
   const [showIntro, setShowIntro] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     let interval;
@@ -66,7 +38,7 @@ function AIAssistant() {
 
     const lower = userInput.toLowerCase();
 
-    // === askinging for directions ===
+    // === asking for directions ===
     if (
       lower.includes("image") ||
       lower.includes("video") ||
@@ -74,7 +46,7 @@ function AIAssistant() {
     ) {
       const aiMessage = {
         sender: "ai",
-        text: `You can explore NASA's image and video archive in the <a href="/media-search" style="color:#1976d2; text-decoration: underline;">Media Search</a> section.`,
+        text: `You can explore NASA's image and video archive in the <span class="ai-link" data-path="/media-search" style="color:#1976d2; text-decoration: underline; cursor:pointer;">Media Search</span> section.`,
       };
       setMessages((prev) => [...prev, aiMessage]);
       setLoading(false);
@@ -91,7 +63,7 @@ function AIAssistant() {
     ) {
       const aiMessage = {
         sender: "ai",
-        text: `You can view Near Earth Object data in the <a href="/NEOWS" style="color:#1976d2; text-decoration: underline;">NEO Lookup</a> section.`,
+        text: `You can view Near Earth Object data in the <span class="ai-link" data-path="/NEOWS" style="color:#1976d2; text-decoration: underline; cursor:pointer;">NEO Lookup</span> section.`,
       };
       setMessages((prev) => [...prev, aiMessage]);
       setLoading(false);
@@ -105,7 +77,7 @@ function AIAssistant() {
     ) {
       const aiMessage = {
         sender: "ai",
-        text: `You can find the NASA Picture of the Day on the <a href="/" style="color:#1976d2; text-decoration: underline;">Home Page</a>.`,
+        text: `You can find the NASA Picture of the Day on the <span class="ai-link" data-path="/" style="color:#1976d2; text-decoration: underline; cursor:pointer;">Home Page</span>.`,
       };
       setMessages((prev) => [...prev, aiMessage]);
       setLoading(false);
@@ -121,7 +93,7 @@ function AIAssistant() {
     ) {
       const aiMessage = {
         sender: "ai",
-        text: `You can share your discovery in the <a href="/DataSpace" style="color:#1976d2; text-decoration: underline;">Submit Information</a> section.`,
+        text: `You can share your discovery in the <span class="ai-link" data-path="/DataSpace" style="color:#1976d2; text-decoration: underline; cursor:pointer;">Submit Information</span> section.`,
       };
       setMessages((prev) => [...prev, aiMessage]);
       setLoading(false);
@@ -139,7 +111,7 @@ function AIAssistant() {
     ) {
       const aiMessage = {
         sender: "ai",
-        text: `You can explore space sightings and discoveries from people around the world in the <a href="/SpaceSightseeing" style="color:#1976d2; text-decoration: underline;">Sightseeing</a> section.`,
+        text: `You can explore space sightings and discoveries from people around the world in the <span class="ai-link" data-path="/SpaceSightseeing" style="color:#1976d2; text-decoration: underline; cursor:pointer;">Sightseeing</span> section.`,
       };
       setMessages((prev) => [...prev, aiMessage]);
       setLoading(false);
@@ -161,6 +133,18 @@ function AIAssistant() {
       setMessages((prev) => [...prev, errorMsg]);
     } finally {
       setLoading(false);
+    }
+  };
+
+  // --- ADD: link click handler for in-app navigation ---
+  const handleLinkClick = (e) => {
+    if (
+      e.target.classList &&
+      e.target.classList.contains("ai-link") &&
+      e.target.getAttribute("data-path")
+    ) {
+      const path = e.target.getAttribute("data-path");
+      navigate(path);
     }
   };
 
@@ -199,13 +183,10 @@ function AIAssistant() {
                   alignSelf: msg.sender === "user" ? "flex-end" : "flex-start",
                 }}
               >
+                {/* The click handler is attached here for all message links */}
                 <span
-                 dangerouslySetInnerHTML={{ __html: msg.text }}
-                 onClick={(e) => {
-                 if (e.target.classList.contains("ai-link")) {
-                navigate(e.target.getAttribute("data-path"));
-                }
-                }}
+                  dangerouslySetInnerHTML={{ __html: msg.text }}
+                  onClick={handleLinkClick}
                 />
               </div>
             ))}
