@@ -117,7 +117,8 @@ function AIAssistant() {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/explain-tech", {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || "";
+      const res = await fetch(`${backendUrl}/explain-tech`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text: userInput }),
