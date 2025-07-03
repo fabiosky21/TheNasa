@@ -9,7 +9,19 @@ dotenv.config();
 const cohere = new CohereClient({ apiKey: process.env.CO_API_KEY });
 
 const app = express();
-app.use(cors());
+const allowedOrigins = [
+  "http://localhost:3000",                
+  "https://thenasa-1.onrender.com",       
+];
+
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 const PORT = process.env.PORT || 5000;
 
