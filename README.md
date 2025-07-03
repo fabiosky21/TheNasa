@@ -36,10 +36,17 @@ Click here to see the website!!! https://thenasa-1.onrender.com
    - Check out the Sightseeing page to view space-related posts shared by other users.
    - Browse real sightings, stories, and images from people around the world.
 
-6. **AI Assistant:**  
+6. **AI Assistant:**
    - The built-in AI Assistant helps you navigate the website: just ask your question or mention keywords, and it can provide direct links or guide you to the page you need.
-   - On the NASA Tech Transfer section, there’s an “Explain with AI” button next to each item. Click it to get a simple, easy-to-understand summary of any NASA technology.
+   - For example:
+     - If you type words like **"chart"**, **"asteroid"**, or **"NEO"**, the AI will send you a clickable link to the Near Earth Objects (NEO Lookup) page.
+     - If your question includes **"sightseeing"** or **"sightings"**, it will provide a link to the Sightseeing (Submit Info/Blog) page.
+     - Typing **"technology"** or **"tech transfer"** will direct you to the Home page where NASA Tech is featured.
+     - Mentioning **"video"**, **"image"**, or **"media"** will guide you to the Media Search page.
+   - This makes it easy to jump to the right section just by using natural language!
+   - On the NASA Tech Transfer section, there’s an **“Explain with AI”** button next to each item. Click it to get a simple, easy-to-understand summary of any NASA technology.
    - The AI Assistant can also answer questions about NASA, images, tech, and general app usage.
+
 ---
 
 ## 🛠️ Tech Stack
