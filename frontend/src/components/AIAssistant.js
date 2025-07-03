@@ -63,7 +63,7 @@ function AIAssistant() {
     ) {
       const aiMessage = {
         sender: "ai",
-        text: `You can view Near Earth Object data in the <span class="ai-link" data-path="/NEOWS" style="color:#1976d2; text-decoration: underline; cursor:pointer;">NEO Lookup</span> section.`,
+        text: `You can view Near Earth Object data in the <span class="ai-link" data-path="/neows" style="color:#1976d2; text-decoration: underline; cursor:pointer;">NEO Lookup</span> section.`,
       };
       setMessages((prev) => [...prev, aiMessage]);
       setLoading(false);
