@@ -1,12 +1,50 @@
 # 🚀 NASA Explorer
 
 A modern, full-stack web app to explore NASA’s image & video archives, Near-Earth Objects, and real user space sightings—with smart AI explanations and a live database.
+Click here to see the website!!! https://thenasa-1.onrender.com
 
+---
+
+> **💡 Recommendation:**  
+> For the best experience, we recommend using Firefox or Microsoft Edge to browse NASA Explorer.  
+> [More information in Known Issues.](#known-issues)
+
+
+
+## 🛰️ How to Use NASA Explorer
+
+1. **Home Page (Picture of the Day & NASA Technology):**  
+   - When you open the app, the Home page displays NASA’s “Picture of the Day” with its description.
+   - Scroll down to the “NASA Tech Transfer” section to discover real-world technologies developed by NASA.
+
+2. **Explore NASA Media (Images & Videos):**  
+   - Visit the “Explore NASA” page to search for NASA images and videos by keyword (e.g., “Mars”, “Nebula”, “Apollo”).
+   - Use quick filter buttons to search popular topics instantly.
+   - **Filter by Media Type:** Toggle between images and videos.
+   - **Limit Results:** Choose to display 10, 20, or all results to avoid overflow the screen and make browsing easier.
+
+3. **View Near Earth Objects (Asteroids):**  
+   - This section displays both hazardous and non-hazardous asteroids approaching Earth.
+   - Interactive charts show asteroid diameter vs. velocity, and calculate the risk by finding which object comes closest to Earth.
+   - Quickly identify which objects are potentially risky and compare their size, speed, and distance.
+     
+4. **Submit Your Own Sighting:**  
+   - Go to the Submit information page to submit your own space observation or event.
+   - Upload an image, add a description, and your entry will be stored live in the database.
+     
+5. **Sightseeing (Space Sightings Blog):**  
+   - Check out the Sightseeing page to view space-related posts shared by other users.
+   - Browse real sightings, stories, and images from people around the world.
+
+6. **AI Assistant:**  
+   - The built-in AI Assistant helps you navigate the website: just ask your question or mention keywords, and it can provide direct links or guide you to the page you need.
+   - On the NASA Tech Transfer section, there’s an “Explain with AI” button next to each item. Click it to get a simple, easy-to-understand summary of any NASA technology.
+   - The AI Assistant can also answer questions about NASA, images, tech, and general app usage.
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** React (responsive, mobile-first)
+- **Frontend:** React (responsive to size screens and mobile phone)
 - **Backend:** Node.js & Express
 - **Database:** Supabase (PostgreSQL, public bucket for images)
 - **AI:** Cohere for text explanations & chat
@@ -108,6 +146,15 @@ A modern, full-stack web app to explore NASA’s image & video archives, Near-Ea
 - **Check your `.env` files and Supabase settings if you see errors**
 - **Enable anonymous insert policies on Supabase for public submissions**
 - **AI features require valid NASA and Cohere API keys**
+
+---
+## 🐞 Known Issues
+
+- **Google Chrome API Inconsistency:**  
+  Occasionally, API requests to NASA Tech Transfer may fail or behave unexpectedly in Google Chrome. Clearing the cache can sometimes help, but it is not guaranteed to resolve the issue. This problem occurs on the home page, specifically in the second section labeled "NASA Tech Transfer". The rest pages and API's works fine.  
+  In contrast, the same feature and rest of the project works perfectly and smoothly in Firefox and Microsoft Edge.    
+  - **Status:** Intermittent; cause is under investigation.  
+  - **Workaround:** If you experience loading issues in Chrome, it is **recomended** , use Firefox or Edge.
 
 ---
 
