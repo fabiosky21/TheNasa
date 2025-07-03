@@ -36,9 +36,11 @@ const NEOWS = () => {
     }
 
     try {
-      const res = await fetch(
-        `/near-earth-objects?start_date=${startDate}&end_date=${endDate}`
-      );
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || "";
+const res = await fetch(
+  `${backendUrl}/near-earth-objects?start_date=${startDate}&end_date=${endDate}`
+);
+
 
       const data = await res.json();
 
