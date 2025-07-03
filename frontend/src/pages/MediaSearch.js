@@ -29,7 +29,7 @@ function MediaSearch() {
 
     try {
       const res = await fetch(
-        `/search-images?q=${encodeURIComponent(searchTerm)}`
+        `${backendUrl}/search-images?q=${encodeURIComponent(searchTerm)}`
       );
       const data = await res.json();
 
@@ -58,7 +58,7 @@ useEffect(() => {
     setLoading(true);
     try {
       const res = await fetch(
-        `/search-images?q=${encodeURIComponent(query)}`
+        `${backendUrl}/search-images?q=${encodeURIComponent(query)}`
       );
       const data = await res.json();
 
