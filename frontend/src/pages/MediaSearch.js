@@ -9,6 +9,7 @@ import cama from "../assets/images/cama.png";
 const quickFilters = ["Mars", "Moon", "Earth", "Galaxy", "Nebula", "Apollo"];
 
 function MediaSearch() {
+  const backendUrl = process.env.REACT_APP_BACKEND_URL || "";
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
